@@ -1,0 +1,4 @@
+directory: example1\folder\subfolder
+patterns:
+- \.txt
+- \.csv

@@ -1,0 +1,109 @@
+General description
+
+The purpose of the task is to implement a Python CLI script with a function that scans through a directory 
+and returns a list of files that match the patters specified in a provided YAML configuration file.
+ 
+Function requirements:
+
+1. The function shall be named test_function.
+
+2. The function shall accept two input parameters: 
+	a. directory - an absolute path to the directory where to look for files, 
+	b. patterns - a list of strings (regular expression patterns).
+
+3. If the input is not valid (directory is not a path or patterns is not a list of strings), 
+a ValueError exception shall be thrown. 
+
+4. Each string entry from patterns shall be a regular expression pattern for the base file name (case sensitive). 
+It is assumed that a pattern does not contain implicit or explicit directory entries.
+
+5. The function shall return a list of strings – absolute paths to files that exist in the specified directory 
+(no recursive check for subdirectories is required, only the specified directory should be looked in) and 
+match any of specified patterns. If no files found that match patterns, an empty list should be returned.
+
+Script requirements:
+
+1. The script shall use the built-in Python modules: 
+	a. Argparse module – for CLI arguments processing, 
+	b. re module – for regular expressions processing.
+
+2. The script shall use external library pyyaml for YAML configuration parsing (the library shall be imported 
+as yaml module). Please ignore all pyyaml warnings in the console.
+
+3. The script shall accept only one mandatory option --config (or -c) that shall be an absolute or relative 
+path to a configuration YAML file (.yml extension). Example: 
+	$ python %script_name% --config configuration.yml
+
+4. If the configuration path is not valid, the script shall return a message “Configuration file not found.”
+
+5. The configuration file format shall be as follows (see the Examples folder for directories and configuration 
+files examples):
+	directory: target/directory
+	patterns:
+	- file.\.txt 
+	- %other pattern2% 
+	... 
+	- %other patternN%
+
+6. The directory parameter shall contain a path to the folder with files relative to configuration file. 
+If you cannot make it work, you may assume that directory contains an absolute path to the folder.
+
+7. The script shall parse the configuration file, pass directory and patterns entries as corresponding 
+parameters to the above-mentioned function (test_function).
+
+8. The script shall not check the configuration file format (it is assumed that the configuration file format 
+is not corrupted, the directory entry is not empty and the patterns entry contains at least one list item).
+
+9. The script shall print the list of filenames in the console. Example output on Linux machine:
+	/home/user/test/file1.txt 
+	/home/user/test/file2.txt 
+	/home/user/test/file3.txt
+	Path segments may be separated by / or \, for example, the following output is valid:
+	D:\some_folder/subfolder\test.csv
+
+10. If no files are found, the script shall print a “No files found.” message in the console.
+
+11. The script should process exceptions – no stack trace shall be returned in the console, instead, 
+a short error message “An error occurred, script terminated.” shall be printed.
+
+
+Examples:
+
+
+config1.yml:
+
+directory: example1\folder\subfolder
+patterns:
+- \.txt
+- \.csv
+
+input:
+
+python C:\Users\User\Desktop\Directory_Scanner\config_parsing.py -c config1.yml
+
+output:
+
+C:\Users\User\Desktop\Directory_Scanner\example1\folder\subfolder\Hi.txt
+C:\Users\User\Desktop\Directory_Scanner\example1\folder\subfolder\test.csv
+C:\Users\User\Desktop\Directory_Scanner\example1\folder\subfolder\test.txt
+
+
+config2.yml:
+
+directory: dir
+patterns:
+- QL\.(d|csv)
+- \d\.txt
+- Hello
+
+input:
+
+python C:\Users\User\Desktop\Directory_Scanner\config_parsing.py --config example2\config2.yml
+
+output:
+
+C:\Users\User\Desktop\Directory_Scanner\config_parsing.py --config example2\dir\Hello.txt
+C:\Users\User\Desktop\Directory_Scanner\config_parsing.py --config example2\dir\SQL.docx
+C:\Users\User\Desktop\Directory_Scanner\config_parsing.py --config example2\dir\test2.txt
+
+

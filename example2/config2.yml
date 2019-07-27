@@ -1,0 +1,5 @@
+directory: dir
+patterns:
+- QL\.(d|csv)
+- \d\.txt
+- Hello
