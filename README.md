@@ -38,8 +38,7 @@ path to a configuration YAML file (.yml extension). Example:
 
 4. If the configuration path is not valid, the script shall return a message “Configuration file not found.”
 
-5. The configuration file format shall be as follows (see the Examples folder for directories and configuration 
-files examples):
+5. The configuration file format shall be as follows:
 	directory: target/directory
 	patterns:
 	- file.\.txt 
@@ -69,41 +68,3 @@ is not corrupted, the directory entry is not empty and the patterns entry contai
 a short error message “An error occurred, script terminated.” shall be printed.
 
 
-Examples:
-
-
-config1.yml:
-
-directory: example1\folder\subfolder
-patterns:
-- \.txt
-- \.csv
-
-input:
-
-python C:\Users\User\Desktop\Directory_Scanner\config_parsing.py -c config1.yml
-
-output:
-
-C:\Users\User\Desktop\Directory_Scanner\example1\folder\subfolder\Hi.txt
-C:\Users\User\Desktop\Directory_Scanner\example1\folder\subfolder\test.csv
-C:\Users\User\Desktop\Directory_Scanner\example1\folder\subfolder\test.txt
-
-
-config2.yml:
-
-directory: dir
-patterns:
-- QL\.(d|csv)
-- \d\.txt
-- Hello
-
-input:
-
-python C:\Users\User\Desktop\Directory_Scanner\config_parsing.py --config example2\config2.yml
-
-output:
-
-C:\Users\User\Desktop\Directory_Scanner\config_parsing.py --config example2\dir\Hello.txt
-C:\Users\User\Desktop\Directory_Scanner\config_parsing.py --config example2\dir\SQL.docx
-C:\Users\User\Desktop\Directory_Scanner\config_parsing.py --config example2\dir\test2.txt
