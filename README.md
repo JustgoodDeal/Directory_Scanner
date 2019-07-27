@@ -42,6 +42,8 @@ path to a configuration YAML file (.yml extension). Example:
 
 
 	directory: target/directory
+	
+	
 	patterns:
 	- file.\.txt 
 	- %other pattern2% 
