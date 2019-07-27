@@ -39,6 +39,8 @@ path to a configuration YAML file (.yml extension). Example:
 4. If the configuration path is not valid, the script shall return a message “Configuration file not found.”
 
 5. The configuration file format shall be as follows:
+
+
 	directory: target/directory
 	patterns:
 	- file.\.txt 
