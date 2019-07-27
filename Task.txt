@@ -17,15 +17,15 @@ a ValueError exception shall be thrown.
 4. Each string entry from patterns shall be a regular expression pattern for the base file name (case sensitive). 
 It is assumed that a pattern does not contain implicit or explicit directory entries.
 
-5. The function shall return a list of strings ñ absolute paths to files that exist in the specified directory 
+5. The function shall return a list of strings ‚Äì absolute paths to files that exist in the specified directory 
 (no recursive check for subdirectories is required, only the specified directory should be looked in) and 
 match any of specified patterns. If no files found that match patterns, an empty list should be returned.
 
 Script requirements:
 
 1. The script shall use the built-in Python modules: 
-	a. Argparse module ñ for CLI arguments processing, 
-	b. re module ñ for regular expressions processing.
+	a. Argparse module ‚Äì for CLI arguments processing, 
+	b. re module ‚Äì for regular expressions processing.
 
 2. The script shall use external library pyyaml for YAML configuration parsing (the library shall be imported 
 as yaml module). Please ignore all pyyaml warnings in the console.
@@ -34,10 +34,9 @@ as yaml module). Please ignore all pyyaml warnings in the console.
 path to a configuration YAML file (.yml extension). Example: 
 	$ python %script_name% --config configuration.yml
 
-4. If the configuration path is not valid, the script shall return a message ìConfiguration file not found.î
+4. If the configuration path is not valid, the script shall return a message ‚ÄúConfiguration file not found.‚Äù
 
-5. The configuration file format shall be as follows (see the Examples folder for directories and configuration 
-files examples):
+5. The configuration file format shall be as follows:
 	directory: target/directory
 	patterns:
 	- file.\.txt 
@@ -61,10 +60,10 @@ is not corrupted, the directory entry is not empty and the patterns entry contai
 	Path segments may be separated by / or \, for example, the following output is valid:
 	D:\some_folder/subfolder\test.csv
 
-10. If no files are found, the script shall print a ìNo files found.î message in the console.
+10. If no files are found, the script shall print a ‚ÄúNo files found.‚Äù message in the console.
 
-11. The script should process exceptions ñ no stack trace shall be returned in the console, instead, 
-a short error message ìAn error occurred, script terminated.î shall be printed.
+11. The script should process exceptions ‚Äì no stack trace shall be returned in the console, instead, 
+a short error message ‚ÄúAn error occurred, script terminated.‚Äù shall be printed.
 
 
 Examples:
